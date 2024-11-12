@@ -30,7 +30,7 @@ export const metadata: Metadata = {
     description: "OR Tracker is a bot designed specifically for the community of the OR server, facilitating the seamless tracking of current records.",
     images: [
       {
-        url: "/public/record_tracker.png",
+        url: "/record_tracker.png",
         alt: "Record Tracker Logo",
       },
     ],
