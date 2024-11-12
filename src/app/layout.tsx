@@ -17,6 +17,7 @@ const geistMono = localFont({
 export const metadata: Metadata = {
   title: "OR Tracker",
   description: "OR Tracker V.2",
+  themeColor: "#66E972",
   icons: [
     {
       rel: "icon",
