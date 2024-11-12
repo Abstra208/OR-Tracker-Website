@@ -18,6 +18,7 @@ export const metadata: Metadata = {
   title: "OR Tracker",
   description: "OR Tracker V.2",
   themeColor: "#66E972",
+  robots: "follow, index",
   icons: [
     {
       rel: "icon",
