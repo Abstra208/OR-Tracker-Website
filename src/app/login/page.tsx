@@ -9,6 +9,7 @@ if (Cookies.get('access_token') !== undefined) {
 }
 
 const LoginPage = () => {
+  const redirect_url = window.location.origin + window.location.pathname
   useEffect(() => {
     const fetchUserData = async (code: string) => {
       try {
@@ -18,7 +19,7 @@ const LoginPage = () => {
           client_secret: 'PbYHrLjnpxiwA0vBpQ4r8-gzfjUFMX9q',
           grant_type: 'authorization_code',
           code: code,
-          redirect_uri: window.location.origin + window.location.pathname,
+          redirect_uri: redirect_url,
           scope: 'identify'
         }), {
           headers: {
@@ -41,7 +42,7 @@ const LoginPage = () => {
     if (code) {
       fetchUserData(code);
     } else {
-      window.location.href = 'https://discord.com/oauth2/authorize?client_id=1294873348387635230&response_type=code&redirect_uri=https%3A%2F%2For-tracker-website.vercel.app%2Flogin&scope=identify';
+      window.location.href = `https://discord.com/oauth2/authorize?client_id=1294873348387635230&response_type=code&redirect_uri=${redirect_url}&scope=identify`;
     }
   }, []);
 };
