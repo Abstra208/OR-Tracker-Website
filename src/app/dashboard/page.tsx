@@ -22,7 +22,7 @@ if (!getApps().length) {
     app = initializeApp(firebaseConfig);
 }
 
-if (Cookies.get('access_token') === undefined) {
+if (typeof window !== 'undefined' && Cookies.get('access_token') === undefined) {
     window.location.href = '/login';
 }
 
