@@ -5,12 +5,6 @@ import axios from 'axios';
 import Cookies from 'js-cookie';
 
 const LoginPage = () => {
-  useEffect(() => {
-    if (typeof window !== 'undefined' && Cookies.get('access_token') !== undefined) {
-      window.location.href = '/login';
-    }
-  }, []);
-
   const redirect_url = typeof window !== 'undefined' ? window.location.origin + window.location.pathname : '';
   useEffect(() => {
     const fetchUserData = async (code: string) => {
