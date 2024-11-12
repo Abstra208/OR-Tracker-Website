@@ -35,7 +35,9 @@ const LoginPage = () => {
     const urlParams = new URLSearchParams(window.location.search);
     const code = urlParams.get('code');
 
-    if (code) {
+    if (Cookies.get('access_token') !== undefined) {
+      window.location.href = '/dashboard';
+    } else if (code) {
       fetchUserData(code);
     } else {
       window.location.href = `https://discord.com/oauth2/authorize?client_id=1294873348387635230&response_type=code&redirect_uri=${redirect_url}&scope=identify`;
