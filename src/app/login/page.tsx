@@ -18,7 +18,7 @@ const LoginPage = () => {
           client_secret: 'PbYHrLjnpxiwA0vBpQ4r8-gzfjUFMX9q',
           grant_type: 'authorization_code',
           code: code,
-          redirect_uri: 'http://localhost:3000/login',
+          redirect_uri: window.location.origin + window.location.pathname,
           scope: 'identify'
         }), {
           headers: {
@@ -41,7 +41,7 @@ const LoginPage = () => {
     if (code) {
       fetchUserData(code);
     } else {
-      window.location.href = 'https://discord.com/oauth2/authorize?client_id=1294873348387635230&response_type=code&redirect_uri=http%3A%2F%2Flocalhost%3A3000%2Flogin&scope=identify';
+      window.location.href = 'https://discord.com/oauth2/authorize?client_id=1294873348387635230&response_type=code&redirect_uri=https%3A%2F%2For-tracker-website.vercel.app%2Flogin&scope=identify';
     }
   }, []);
 };
