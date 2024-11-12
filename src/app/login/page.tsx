@@ -4,8 +4,8 @@ import { useEffect, useState } from 'react';
 import axios from 'axios';
 import Cookies from 'js-cookie';
 
-if (Cookies.get('access_token') !== undefined) {
-  window.location.href = '/dashboard';
+if (typeof window !== 'undefined' && Cookies.get('access_token') !== undefined) {
+  window.location.href = '/login';
 }
 
 const LoginPage = () => {
