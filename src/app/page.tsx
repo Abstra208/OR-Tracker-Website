@@ -45,16 +45,21 @@ export default function Home() {
   const [amountrecords, setRecords] = useState<number>();
   const amountservers = 1;
   useEffect(() => {
-      const fetchRecords = async () => {
-          try {
-              const Recordsnapshot = await get(child(ref(db), '/records'));
-              setRecords(Object.keys(Recordsnapshot.val()).length);
-          } catch (error) {
-              console.error('Erreur lors de la récupération des enregistrements:', error);
-          }
-      };
-
-      fetchRecords();
+    const fetchRecords = async () => {
+      try {
+        const snapshot = await get(child(ref(db), '/records'));
+        const records = snapshot.val();
+        if (records) {
+          setRecords(Object.keys(records).length);
+        } else {
+          setRecords(0);
+        }
+      } catch (error) {
+        console.error('Erreur lors de la récupération des enregistrements:', error);
+      }
+    };
+  
+    fetchRecords();
   }, [db]);
 
   const handleLogin = () => {
