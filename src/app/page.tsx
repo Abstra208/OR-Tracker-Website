@@ -43,7 +43,7 @@ export default function Home() {
   }
 
   const [amountrecords, setRecords] = useState<number>();
-  const [amountservers, setServers] = useState<number>();
+  const amountservers = 1;
   useEffect(() => {
       const fetchRecords = async () => {
           try {
@@ -53,19 +53,6 @@ export default function Home() {
               console.error('Erreur lors de la récupération des enregistrements:', error);
           }
       };
-      const fetchServers = async () => {
-          try {
-              const Serverssnapshot = await get(child(ref(db), '/servers'));
-              const Servers = Object.keys(Serverssnapshot.val()).length;
-              if (Servers === 0) {
-                  setServers(0);
-              } else {
-                  setServers(Servers);
-              }
-          } catch (error) {
-              console.error('Erreur lors de la récupération des serveurs:', error);
-          }
-      }
 
       fetchRecords();
   }, [db]);
