@@ -17,7 +17,6 @@ const geistMono = localFont({
 export const metadata: Metadata = {
   title: "OR Tracker",
   description: "OR Tracker V.2",
-  themeColor: "#66E972",
   robots: "follow, index",
   icons: [
     {
@@ -46,6 +45,10 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
+      <head>
+        <meta name="description" content="OR Tracker is a bot designed specifically for the community of the OR server, facilitating the seamless tracking of current records." />
+        <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon" />
+      </head>
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >

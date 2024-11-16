@@ -81,7 +81,10 @@ const Dashboard = () => {
                 setAvatar(userResponse.data.avatar);
                 setAvatarUrl(`https://cdn.discordapp.com/avatars/${id}/${avatar}.png`);
             } catch (error) {
-                console.error('Erreur lors de la récupération des données utilisateur:', error);
+                setUsername('Guest');
+                setId('0');
+                setAvatar('0');
+                setAvatarUrl('https://cdn.discordapp.com/embed/avatars/0.png');
             }
         };
 

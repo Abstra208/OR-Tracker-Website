@@ -37,6 +37,9 @@ const LoginPage = () => {
 
     if (Cookies.get('access_token') !== undefined) {
       window.location.href = '/dashboard';
+    } else if (code === 'guest') {
+      Cookies.set('access_token', 'guest');
+      window.location.href = '/dashboard';
     } else if (code) {
       fetchUserData(code);
     } else {
