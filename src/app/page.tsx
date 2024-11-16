@@ -6,10 +6,6 @@ import Cookies from 'js-cookie';
 const { initializeApp, getApps } = require('firebase/app');
 const { getDatabase, ref, set, get, child, update, remove } = require('firebase/database');
 
-if (Cookies.get('access_token') !== undefined) {
-  window.location.href = '/dashboard';
-}
-
 const firebaseConfig = {
   apiKey: process.env.REACT_APP_API_KEY,
   authDomain: process.env.REACT_APP_AUTH_DOMAIN,
@@ -30,6 +26,13 @@ const db = getDatabase(app);
 
 export default function Home() {
   const [loginframe, setLoginframe] = useState<JSX.Element | null>(null);
+
+  useEffect(() => {
+    if (Cookies.get('access_token') !== undefined) {
+      window.location.href = '/dashboard';
+    }
+  }, []);
+
   const handleCloseLogin = (e: React.MouseEvent) => {
     const target = e.target as HTMLElement;
     const frame = document.querySelector('#login .frame') as HTMLElement;
