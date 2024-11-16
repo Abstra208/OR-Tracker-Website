@@ -20,6 +20,8 @@ let app = null;
 
 if (!getApps().length) {
   app = initializeApp(firebaseConfig);
+} else {
+  app = getApps()[0];
 }
 
 const db = getDatabase(app);
@@ -136,6 +138,7 @@ export default function Home() {
           </section>
         </div>
       </main>
+      {loginframe}
     </div>
   );
 }
