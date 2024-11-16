@@ -136,7 +136,6 @@ export default function Home() {
           </section>
         </div>
       </main>
-      {loginframe}
     </div>
   );
 }
