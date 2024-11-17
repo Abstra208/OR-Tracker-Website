@@ -48,10 +48,12 @@ export default function Home() {
 
   const handleCloseLogin = (e: React.MouseEvent) => {
     const target = e.target as HTMLElement;
-    const frame = document.querySelector('#login .frame') as HTMLElement;
-    if (target && !frame.contains(target)) {
-      frame.className = 'frame close';
-      setLoginframe(null);
+    if (typeof document !== 'undefined') {
+      const frame = document.querySelector('#login .frame') as HTMLElement;
+      if (target && !frame.contains(target)) {
+        frame.className = 'frame close';
+        setLoginframe(null);
+      }
     }
   }
 
