@@ -118,6 +118,8 @@ const Dashboard = () => {
                     (record as HTMLElement).style.display = 'none';
                 }
             });
+        } else {
+            console.error('Erreur lors de la recherche:', 'document is not defined');
         }
     }
 

@@ -51,9 +51,10 @@ export default function Home() {
     if (typeof document !== 'undefined') {
       const frame = document.querySelector('#login .frame') as HTMLElement;
       if (target && !frame.contains(target)) {
-        frame.className = 'frame close';
         setLoginframe(null);
       }
+    } else {
+      setLoginframe(null);
     }
   }
 
