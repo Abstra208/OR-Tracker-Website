@@ -101,6 +101,9 @@ const Dashboard = () => {
     }
 
     const handleSearch = (e: React.ChangeEvent<HTMLInputElement>) => {
+        if (typeof document === 'undefined') {
+            return;
+        }
         const search = e.target.value.toLowerCase();
         const records_list = document.querySelectorAll('ul li');
 
