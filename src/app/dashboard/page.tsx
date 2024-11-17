@@ -33,6 +33,7 @@ const Dashboard = () => {
     const [avatarUrl, setAvatarUrl] = useState('');
     const db = getDatabase(app);
     interface Record {
+        name: string;
         description: string;
         imageUrl?: string;
     }
@@ -56,10 +57,13 @@ const Dashboard = () => {
 
     for (const record in records) {
         records_list.push(
-            <div key={record}>
-                <h2>{record}</h2>
-                <p>{records[record].description}</p>
-            </div>
+            <li key={record}>
+                <input type="checkbox" id={record} name={record} />
+                <label htmlFor={record}>
+                    <h2>{records[record].name}</h2>
+                    <p>{records[record].description}</p>
+                </label>
+            </li>
         );
     }
 
@@ -96,16 +100,43 @@ const Dashboard = () => {
         window.location.href = '/';
     }
 
+    const handleSearch = (e: React.ChangeEvent<HTMLInputElement>) => {
+        const search = e.target.value.toLowerCase();
+        const records_list = document.querySelectorAll('ul li');
+
+        records_list.forEach((record) => {
+            const nameElement = record.querySelector('h2');
+            const descriptionElement = record.querySelector('p');
+
+            const name = nameElement?.textContent?.toLowerCase() || '';
+            const description = descriptionElement?.textContent?.toLowerCase() || '';
+
+            if (name.includes(search) || description.includes(search)) {
+                (record as HTMLElement).style.display = 'block';
+            } else {
+                (record as HTMLElement).style.display = 'none';
+            }
+        });
+    }
+
     return (
         <main>
             <nav>
                 <h1>Bienvenue, {username} !</h1>
                 <img src={avatarUrl} alt={`${username}'s avatar`} />
+                <button onClick={handleLogout}>Log out</button>
             </nav>
             <div>
-                {records_list}
+                <input 
+                    type="text" 
+                    name="search" 
+                    id="search" 
+                    onChange={handleSearch} 
+                />
+                <ul>
+                    {records_list}
+                </ul>
             </div>
-            <button onClick={handleLogout}>Log out</button>
         </main>
     );
 }

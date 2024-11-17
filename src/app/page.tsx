@@ -5,6 +5,7 @@ import Image from "next/image";
 import Cookies from 'js-cookie';
 const { initializeApp, getApps } = require('firebase/app');
 const { getDatabase, ref, set, get, child, update, remove } = require('firebase/database');
+import { inView, animate, spring, delay, stagger } from "motion"
 
 const firebaseConfig = {
   apiKey: process.env.REACT_APP_API_KEY,
@@ -27,6 +28,16 @@ if (!getApps().length) {
 const db = getDatabase(app);
 
 export default function Home() {
+  inView("#servers_count", () => {
+    animate("#servers_count ul", { x: [ 500, 0 ] }, { type: spring});
+  });
+  inView("#records_count", () => {
+    animate("#records_count ul", { x: [ -500, 0 ] }, { type: spring});
+  });
+  inView("#users_count", () => {
+    animate("#users_count ul", { x: [ 500, 0 ] }, { type: spring});
+  });
+
   const [loginframe, setLoginframe] = useState<JSX.Element | null>(null);
 
   useEffect(() => {
@@ -140,16 +151,23 @@ export default function Home() {
           </ul>
         </div>
         <div className='informations'>
-          <section>
-            <h2>Servers</h2>
-            <p>{amountservers}</p>
+          <section id='servers_count'>
+            <ul>
+              <h2>Servers</h2>
+              <p>{amountservers}</p>              
+            </ul>
           </section>
-          <section>
-            <h2>Records</h2>
-            <p>{amountrecords}</p>
+          <section id='records_count'>
+            <ul>
+              <h2>Records</h2>
+              <p>{amountrecords}</p>
+            </ul>
           </section>
-          <section>
-            <h2>Users</h2>
+          <section id='users_count'>
+            <ul>
+              <h2>Users</h2>
+              <p>Null</p>
+            </ul>
           </section>
         </div>
       </main>

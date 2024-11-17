@@ -67,7 +67,7 @@ body {
 #app main{
   width: 100%;
   display: grid;
-  grid-template-rows: 76vh 30vh;
+  grid-template-rows: 100vh 30vh;
 }
 
 #app main .welcome{
@@ -133,9 +133,15 @@ body {
 #app main .informations {
   width: 100%;
   display: grid;
-  grid-template-columns: 1fr 1fr 1fr;
+  grid-template-rows: 20vh 20vh 20vh;
 }
 #app main .informations section{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+#app main .informations section ul{
   display: flex;
   justify-content: center;
   align-items: center;
