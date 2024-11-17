@@ -28,7 +28,17 @@ if (!getApps().length) {
 const db = getDatabase(app);
 
 export default function Home() {
-
+  if (typeof document !== 'undefined') {
+    inView("#servers_count", () => {
+      animate("#servers_count ul", { x: [ 500, 0 ] }, { type: spring});
+    });
+    inView("#records_count", () => {
+      animate("#records_count ul", { x: [ -500, 0 ] }, { type: spring});
+    });
+    inView("#users_count", () => {
+      animate("#users_count ul", { x: [ 500, 0 ] }, { type: spring});
+    });
+  }
 
   const [loginframe, setLoginframe] = useState<JSX.Element | null>(null);
 
