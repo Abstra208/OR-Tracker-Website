@@ -101,25 +101,24 @@ const Dashboard = () => {
     }
 
     const handleSearch = (e: React.ChangeEvent<HTMLInputElement>) => {
-        if (typeof document === 'undefined') {
-            return;
+        if (typeof document !== 'undefined') {
+            const search = e.target.value.toLowerCase();
+            const records_list = document.querySelectorAll('ul li');
+
+            records_list.forEach((record) => {
+                const nameElement = record.querySelector('h2');
+                const descriptionElement = record.querySelector('p');
+
+                const name = nameElement?.textContent?.toLowerCase() || '';
+                const description = descriptionElement?.textContent?.toLowerCase() || '';
+
+                if (name.includes(search) || description.includes(search)) {
+                    (record as HTMLElement).style.display = 'block';
+                } else {
+                    (record as HTMLElement).style.display = 'none';
+                }
+            });
         }
-        const search = e.target.value.toLowerCase();
-        const records_list = document.querySelectorAll('ul li');
-
-        records_list.forEach((record) => {
-            const nameElement = record.querySelector('h2');
-            const descriptionElement = record.querySelector('p');
-
-            const name = nameElement?.textContent?.toLowerCase() || '';
-            const description = descriptionElement?.textContent?.toLowerCase() || '';
-
-            if (name.includes(search) || description.includes(search)) {
-                (record as HTMLElement).style.display = 'block';
-            } else {
-                (record as HTMLElement).style.display = 'none';
-            }
-        });
     }
 
     return (
