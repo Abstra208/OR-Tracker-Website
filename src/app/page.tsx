@@ -3,9 +3,9 @@
 import { useEffect, useState } from 'react';
 import Image from "next/image";
 import Cookies from 'js-cookie';
-const { initializeApp, getApps } = require('firebase/app');
-const { getDatabase, ref, set, get, child, update, remove } = require('firebase/database');
-import { inView, animate, spring, delay, stagger } from "motion"
+import { initializeApp, getApps } from 'firebase/app';
+import { getDatabase, ref, get, child } from 'firebase/database';
+import { inView, animate, spring } from "motion"
 
 const firebaseConfig = {
   apiKey: process.env.REACT_APP_API_KEY,
@@ -48,7 +48,7 @@ export default function Home() {
 
   const handleCloseLogin = (e: React.MouseEvent) => {
     const target = e.target as HTMLElement;
-    if (typeof document !== 'undefined') {
+    if (typeof window !== 'undefined' && typeof document !== 'undefined') {
       const frame = document.querySelector('#login .frame') as HTMLElement;
       if (target && !frame.contains(target)) {
         setLoginframe(null);
