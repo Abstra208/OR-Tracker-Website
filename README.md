@@ -24,7 +24,7 @@ You can visite the website here: [OR Tracker Website](https://ortracker.app)
 
 ## Image
 
-<img src="https://cloud-obyau20pr-hack-club-bot.vercel.app/0image.png" style="height: 600px;" alt="" />
+<img src="https://cloud-obyau20pr-hack-club-bot.vercel.app/0image.png" style="width: 600px;" alt="" />
 
 ## Information for non-OR player
 
