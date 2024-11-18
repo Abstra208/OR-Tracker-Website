@@ -1,11 +1,10 @@
 "use client";
 
 import { useEffect, useState } from 'react';
-import Image from "next/image";
 import Cookies from 'js-cookie';
 import { initializeApp, getApps } from 'firebase/app';
 import { getDatabase, ref, get, child } from 'firebase/database';
-import { inView, animate, spring } from "motion"
+import { inView, animate, spring } from "motion";
 
 const firebaseConfig = {
   apiKey: process.env.REACT_APP_API_KEY,
@@ -28,17 +27,20 @@ if (!getApps().length) {
 const db = getDatabase(app);
 
 export default function Home() {
-  if (typeof document !== 'undefined') {
-    inView("#servers_count", () => {
-      animate("#servers_count ul", { x: [ 500, 0 ] }, { type: spring});
-    });
-    inView("#records_count", () => {
-      animate("#records_count ul", { x: [ -500, 0 ] }, { type: spring});
-    });
-    inView("#users_count", () => {
-      animate("#users_count ul", { x: [ 500, 0 ] }, { type: spring});
-    });
-  }
+  useEffect(() => {
+    if (typeof document !== 'undefined') {
+      inView("#servers_count", () => {
+        animate("#servers_count ul", { x: [500, 0] }, { type: spring });
+      });
+      inView("#records_count", () => {
+        animate("#records_count ul", { x: [-500, 0] }, { type: spring });
+      });
+      inView("#users_count", () => {
+        animate("#users_count ul", { x: [500, 0] }, { type: spring });
+      });
+      animate(".welcome", { opacity: [0, 1], y: [-100, 0] }, { type: spring });
+    }
+  }, []);
 
   const [loginframe, setLoginframe] = useState<JSX.Element | null>(null);
 
@@ -123,30 +125,15 @@ export default function Home() {
     <div id="app">
       <nav>
         <div className="left">
-          <Image
-              src="/or_records.png"
-              alt="Record Tracker Logo"
-              layout="intrinsic"
-              height={40}
-              width={40}
-              priority
-          />
+          <img src="/or_records.png" alt="Record Tracker Logo" />
           <h1>OR Records</h1>
         </div>
         <a onClick={handleLogin}>Login</a>
       </nav>
       <main>
         <div className='welcome'>
-          <Image
-            src="/or_tracker.png"
-            alt="Record Tracker Logo"
-            layout="intrinsic"
-            height={180}
-            width={180}
-            priority
-            className="big-logo"
-          />
-          <h1>OR Tracker</h1>
+          <img src="/or_tracker.png" alt="Record Tracker Logo" />
+          <h1>OR Records</h1>
           <p>OR Tracker is a bot designed specifically for the community of the OR server,<br/> facilitating the seamless tracking of current records.</p>
           <ul>
             <li><a href="/invite" target='_blank'>Invite OR Tracker</a></li>

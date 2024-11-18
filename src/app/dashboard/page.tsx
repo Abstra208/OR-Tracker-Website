@@ -1,10 +1,12 @@
 "use client";
 
-import { useEffect, useState } from 'react';
+import { use, useEffect, useState } from 'react';
 import axios from 'axios';
 import Cookies from 'js-cookie';
-const { initializeApp, getApps } = require('firebase/app');
-const { getDatabase, ref, set, get, child, update, remove } = require('firebase/database');
+import { animate, stagger } from "motion";
+import "../dashboard.css";
+import { initializeApp, getApps } from 'firebase/app';
+import { getDatabase, ref, set, get, child, update, remove } from 'firebase/database';
 
 const firebaseConfig = {
     apiKey: process.env.REACT_APP_API_KEY,
@@ -16,22 +18,26 @@ const firebaseConfig = {
     appId: process.env.REACT_APP_APP_ID
 };
 
-let app = null;
+let app: ReturnType<typeof initializeApp> | null = null;
 
 if (!getApps().length) {
     app = initializeApp(firebaseConfig);
+} else {
+    app = getApps()[0];
 }
+
+const db = getDatabase(app);
 
 if (typeof window !== 'undefined' && Cookies.get('access_token') === undefined) {
     window.location.href = '/login';
 }
 
-const Dashboard = () => {
+export default function Dashboard() {
     const [username, setUsername] = useState('');
     const [id, setId] = useState('');
     const [avatar, setAvatar] = useState('');
     const [avatarUrl, setAvatarUrl] = useState('');
-    const db = getDatabase(app);
+    const [user_role, setUserRole] = useState('Guest');
     interface Record {
         name: string;
         description: string;
@@ -68,6 +74,28 @@ const Dashboard = () => {
     }
 
     useEffect(() => {
+        if (typeof document !== 'undefined') {
+            animate([
+                ["#records_section li", { opacity: [0, 1] }, { delay: stagger(.2) }]
+            ]);
+        }
+    });
+
+    useEffect(() => {
+        const handleKeyPress = (event: KeyboardEvent) => {
+            if (event.key.length === 1 && event.key.match(/[a-zA-Z0-9]/) || event.key === 'Enter') {
+                document.getElementById('search')?.focus();
+            }
+        };
+
+        window.addEventListener('keydown', handleKeyPress);
+
+        return () => {
+            window.removeEventListener('keydown', handleKeyPress);
+        };
+    }, []);
+
+    useEffect(() => {
         const fetchUserData = async () => {
             try {
                 const accessToken = Cookies.get('access_token');
@@ -83,7 +111,7 @@ const Dashboard = () => {
                 setUsername(userResponse.data.username);
                 setId(userResponse.data.id);
                 setAvatar(userResponse.data.avatar);
-                setAvatarUrl(`https://cdn.discordapp.com/avatars/${id}/${avatar}.png`);
+                setAvatarUrl(`https://cdn.discordapp.com/avatars/${id}/${avatar}.webp?size=64`);
             } catch (error) {
                 setUsername('Guest');
                 setId('0');
@@ -95,10 +123,22 @@ const Dashboard = () => {
         fetchUserData();
     }, []);
 
-    const handleLogout = () => {
-        Cookies.remove('access_token');
-        window.location.href = '/';
-    }
+    useEffect(() => {
+        const fetchPermissions = async () => {
+            try {
+                const permission = await get(child(ref(db), `/permission/admin/`));
+                if (permission.val().includes(id)) {
+                    setUserRole('Admin');
+                } else {
+                    setUserRole('Guest');
+                }
+            } catch (error) {
+                console.error('Erreur lors de la récupération des permissions:', error);
+            }
+        };
+
+        fetchPermissions();
+    }, [id, db]);
 
     const handleSearch = (e: React.ChangeEvent<HTMLInputElement>) => {
         if (typeof document !== 'undefined') {
@@ -124,25 +164,43 @@ const Dashboard = () => {
     }
 
     return (
-        <main>
+        <div id='dashboard'>
             <nav>
-                <h1>Bienvenue, {username} !</h1>
-                <img src={avatarUrl} alt={`${username}'s avatar`} />
-                <button onClick={handleLogout}>Log out</button>
+                <div className='left'>
+                    <img src="/or_records.png" alt="Record Tracker Logo" />
+                    <h1>OR Records</h1>
+                </div>
+                <div className='right'>
+                    <button>
+                        <h1>{username} as {user_role}</h1>
+                        <img src={avatarUrl} alt={`${username}'s avatar`} />
+                    </button>
+                    <div>
+                    <a href='/logout'>Log out</a>
+                    </div>
+                </div>
             </nav>
-            <div>
-                <input 
-                    type="text" 
-                    name="search" 
-                    id="search" 
-                    onChange={handleSearch} 
-                />
-                <ul>
-                    {records_list}
-                </ul>
-            </div>
-        </main>
+            <main>
+                <aside>
+                    <button>Records</button>
+                    <button>Tools</button>
+                    <button>Settings</button>
+                </aside>
+                <section>
+                    <div className='left' id='records_section'>
+                        <div className='search'>
+                            <input type="text" placeholder='Press Enter or start typing' name="search" id="search" onChange={handleSearch} />
+                        </div>
+                        <ul>{records_list}</ul>
+                    </div>
+                    <div className='right' id='tools_section'>
+                        <button>Add</button>
+                        <button>Edit</button>
+                        <button>Delete</button>
+                        <button>Export All</button>
+                    </div>                    
+                </section>
+            </main>
+        </div>
     );
-}
-
-export default Dashboard;
+};

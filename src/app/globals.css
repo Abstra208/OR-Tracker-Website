@@ -54,9 +54,11 @@ body {
   flex-direction: row;
   align-items: center;
   justify-content: center;
+  height: 100%;
 }
 
 #app nav .left img{
+  height: 60%;
   margin-right: .5rem;
 }
 
@@ -81,6 +83,7 @@ body {
 }
 
 #app main .welcome img{
+  height: 30%;
   border-radius: 100%;
   border: 1px solid rgba(0, 0, 0, 0.1);
   margin-bottom: 1rem;
@@ -266,41 +269,4 @@ body {
   align-items: center;
   padding: 1rem;
   font-size: 0.8rem;
-}
-
-@keyframes dropDown {
-  0% {
-    transform: translateY(-25%);
-    opacity: 0;
-  }
-  100% {
-    transform: translateY(0);
-    opacity: 1;
-  }
-}
-@keyframes fadeIn {
-  0% {
-    opacity: 0;
-  }
-  100% {
-    opacity: 1;
-  }
-}
-@keyframes dropDown-image {
-  0% {
-    transform: translateY(-20%);
-    opacity: 0;
-  }
-  100% {
-    transform: translateY(0);
-    opacity: 1;
-  }
-}
-
-.animated-dropdown {
-  animation: dropDown 1s ease-out;
-}
-
-.animated-image-dropdown {
-  animation: dropDown-image 1s ease-out;
 }
