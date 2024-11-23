@@ -163,10 +163,6 @@ body {
   height: 80%;
 }
 
-#app main .features *{
-  border: red 1px solid;
-}
-
 #app main .features{
   display: grid;
   grid-template-rows: repeat(3, 1fr);
