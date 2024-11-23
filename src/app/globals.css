@@ -92,6 +92,18 @@ body {
 #app main .welcome h1{
   font-size: 2rem;
   margin-bottom: .5rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+#app main .welcome h1 span{
+  color: white;
+  background-color: blue;
+  padding: .3rem .8rem;
+  border-radius: 10px;
+  font-size: 1.3rem;
+  margin-left: .5rem;
 }
 
 #app main .welcome p{
