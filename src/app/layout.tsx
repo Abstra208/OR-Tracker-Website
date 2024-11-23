@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import "./globals.css";
+import { SpeedInsights } from "@vercel/speed-insights/next"
 
 export const metadata: Metadata = {
   title: "OR Tracker",
@@ -34,6 +35,7 @@ export default function RootLayout({
     <html lang="en">
       <head>
         <meta name="description" content="OR Tracker is a bot designed specifically for the community of the OR server, facilitating the seamless tracking of current records." />
+        <SpeedInsights/>
       </head>
       <body>
         {children}
