@@ -9,13 +9,13 @@ export default function Home() {
   useEffect(() => {
     if (typeof document !== 'undefined') {
       inView(".features .sec1", () => {
-        animate(".features .sec1 ul", { x: [500, 0] }, { type: spring });
+        animate(".features .sec1 ul", { x: [300, 0] }, { type: spring });
       });
       inView(".features .sec2", () => {
-        animate(".features .sec2 ul", { x: [-500, 0] }, { type: spring });
+        animate(".features .sec2 ul", { x: [-300, 0] }, { type: spring });
       });
       inView(".features .sec3", () => {
-        animate(".features .sec3 ul", { x: [500, 0] }, { type: spring });
+        animate(".features .sec3 ul", { x: [300, 0] }, { type: spring });
       });
       animate(".welcome", { opacity: [0, 1], y: [-100, 0] }, { type: spring });
     }
@@ -129,7 +129,7 @@ export default function Home() {
           <section className='sec2'>
             <ul>
               <h2>Search current records from where you want</h2>
-              <p>You can search for records from where you want. <br/> Discord, your phone, your computer or even your TV</p>
+              <p>You can search for records from where you want. Discord, your phone, your computer or even your TV</p>
             </ul>
           </section>
           <section className='sec3'>

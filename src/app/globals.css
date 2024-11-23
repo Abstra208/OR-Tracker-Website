@@ -160,7 +160,6 @@ body {
   justify-content: center;
   align-items: center;
   flex-direction: column;
-  height: 80%;
 }
 
 #app main .features{
@@ -168,17 +167,23 @@ body {
   grid-template-rows: repeat(3, 1fr);
   margin-top: 1rem;
 }
+#app main .features section ul{
+  height: 80%;
+  padding: 3rem;
+}
 #app main .features .sec1, #app main .features .sec3{
   display: flex;
   justify-content: center;
   align-items: start;
   flex-direction: column;
+  text-align: start;
 }
 #app main .features .sec2{
   display: flex;
   justify-content: center;
   align-items: end;
   flex-direction: column;
+  text-align: end;
 }
 
 /*login popup*/
