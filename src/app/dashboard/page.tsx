@@ -41,7 +41,7 @@ export default function Dashboard() {
     interface Record {
         name: string;
         description: string;
-        imageUrl?: string;
+        owner: string;
     }
 
     const [records, setRecords] = useState<{ [key: string]: Record }>({});
@@ -59,19 +59,44 @@ export default function Dashboard() {
         fetchRecords();
     }, [db]);
 
-    const records_list = [];
+    const [sortedRecords, setSortedRecords] = useState<[string, Record][]>([]);
+    const [records_list, setRecordsList] = useState<JSX.Element[]>([]);
 
-    for (const record in records) {
-        records_list.push(
-            <li key={record}>
-                <input type="checkbox" id={record} name={record} />
-                <label htmlFor={record}>
-                    <h2>{records[record].name}</h2>
-                    <p>{records[record].description}</p>
-                </label>
-            </li>
-        );
-    }
+    useEffect(() => {
+        const sorted = Object.entries(records).sort(([keyA, recordA], [keyB, recordB]) => {
+            return recordA.name.localeCompare(recordB.name);
+        });
+        setSortedRecords(sorted as [string, Record][]);
+    }, [records]);
+
+    useEffect(() => {
+        const newRecordsList: JSX.Element[] = [];
+        for (const [recordKey, recordValue] of sortedRecords) {
+            newRecordsList.push(
+                <li key={recordKey}>
+                    <input type="radio" id={recordKey} name='records_list' />
+                    <label htmlFor={recordKey}>
+                        <h2>{recordValue.name}</h2>
+                        <p>{recordValue.description}</p>
+                    </label>
+                </li>
+            );
+        }
+        setRecordsList(newRecordsList);
+    }, [sortedRecords]);
+
+    const handleSort = (e: React.ChangeEvent<HTMLSelectElement>) => {
+        const order = e.target.value;
+        const sortedRecords = Object.entries(records).sort(([keyA, recordA], [keyB, recordB]) => {
+            if (order === 'a-z') {
+                return recordA.name.localeCompare(recordB.name);
+            } else {
+                return recordB.name.localeCompare(recordA.name);
+            }
+        });
+
+        setRecords(Object.fromEntries(sortedRecords));
+    };
 
     useEffect(() => {
         if (typeof document !== 'undefined') {
@@ -190,6 +215,22 @@ export default function Dashboard() {
                     <div className='left' id='records_section'>
                         <div className='search'>
                             <input type="text" placeholder='Press Enter or start typing' name="search" id="search" onChange={handleSearch} />
+                            <div className='options'>
+                                <li>
+                                    <p>Alphabetical Order:</p>
+                                    <select onChange={handleSort}>
+                                        <option value="a-z">A - Z</option>
+                                        <option value="z-a">Z - A</option>
+                                    </select>
+                                </li>
+                                <li>
+                                    <p>Search for:</p>
+                                    <select>
+                                        <option value="records">Records</option>
+                                        <option value="users">Users</option>
+                                    </select>
+                                </li>
+                            </div>
                         </div>
                         <ul>{records_list}</ul>
                     </div>
@@ -198,7 +239,7 @@ export default function Dashboard() {
                         <button>Edit</button>
                         <button>Delete</button>
                         <button>Export All</button>
-                    </div>                    
+                    </div>
                 </section>
             </main>
         </div>
