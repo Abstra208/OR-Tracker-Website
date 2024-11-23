@@ -99,7 +99,7 @@ export default function Home() {
       <main>
         <div className='welcome'>
           <img src="/or_tracker.png" alt="Record Tracker Logo" />
-          <h1>OR Records</h1>
+          <h1>OR Tracker <span>Beta</span></h1>
           <p>OR Tracker is a bot designed specifically for the community of the OR server,<br/> facilitating the seamless tracking of current records.</p>
           <ul>
             <li><a href="/invite" target='_blank'>Invite OR Tracker</a></li>
