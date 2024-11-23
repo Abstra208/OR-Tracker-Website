@@ -8,14 +8,14 @@ import { set } from 'firebase/database';
 export default function Home() {
   useEffect(() => {
     if (typeof document !== 'undefined') {
-      inView("#servers_count", () => {
-        animate("#servers_count ul", { x: [500, 0] }, { type: spring });
+      inView(".features .sec1", () => {
+        animate(".features .sec1 ul", { x: [500, 0] }, { type: spring });
       });
-      inView("#records_count", () => {
-        animate("#records_count ul", { x: [-500, 0] }, { type: spring });
+      inView(".features .sec2", () => {
+        animate(".features .sec2 ul", { x: [-500, 0] }, { type: spring });
       });
-      inView("#users_count", () => {
-        animate("#users_count ul", { x: [500, 0] }, { type: spring });
+      inView(".features .sec3", () => {
+        animate(".features .sec3 ul", { x: [500, 0] }, { type: spring });
       });
       animate(".welcome", { opacity: [0, 1], y: [-100, 0] }, { type: spring });
     }
@@ -120,17 +120,23 @@ export default function Home() {
           </section>
         </div>
         <div className='features'>
-          <section className='1'>
-            <h2>Track current records</h2>
-            <p>Track the current records easily</p>
+          <section className='sec1'>
+            <ul>
+              <h2>Track current records</h2>
+              <p>Track the current records easily</p>
+            </ul>
           </section>
-          <section className='2'>
-            <h2>Search current records from where you want</h2>
-            <p>You can search for records from where you want. Discord, your phone, your computer or even your TV</p>
+          <section className='sec2'>
+            <ul>
+              <h2>Search current records from where you want</h2>
+              <p>You can search for records from where you want. <br/> Discord, your phone, your computer or even your TV</p>
+            </ul>
           </section>
-          <section className='3'>
-            <h2>Leaderboard for the player</h2>
-            <p>You can take a part into the leaderboard and try to be one with the most records to their name</p>
+          <section className='sec3'>
+            <ul>
+              <h2>Leaderboard for the player</h2>
+              <p>You can take a part into the leaderboard and try to be one with the most records to their name</p>
+            </ul>
           </section>
         </div>
       </main>

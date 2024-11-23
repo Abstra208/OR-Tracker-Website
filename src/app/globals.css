@@ -64,7 +64,7 @@ body {
 #app main{
   width: 100%;
   display: grid;
-  grid-template-rows: 100vh 30vh;
+  grid-template-rows: 60vh 35vh 90vh;
 }
 
 #app main .welcome{
@@ -142,19 +142,46 @@ body {
 
 #app main .informations {
   width: 100%;
-  display: grid;
-  grid-template-rows: 20vh 20vh 20vh;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  flex-direction: row;
+  height: 100%;
 }
 #app main .informations section{
   display: flex;
   justify-content: center;
   align-items: center;
   flex-direction: column;
+  height: 100%;
 }
 #app main .informations section ul{
   display: flex;
   justify-content: center;
   align-items: center;
+  flex-direction: column;
+  height: 80%;
+}
+
+#app main .features *{
+  border: red 1px solid;
+}
+
+#app main .features{
+  display: grid;
+  grid-template-rows: repeat(3, 1fr);
+  margin-top: 1rem;
+}
+#app main .features .sec1, #app main .features .sec3{
+  display: flex;
+  justify-content: center;
+  align-items: start;
+  flex-direction: column;
+}
+#app main .features .sec2{
+  display: flex;
+  justify-content: center;
+  align-items: end;
   flex-direction: column;
 }
 
