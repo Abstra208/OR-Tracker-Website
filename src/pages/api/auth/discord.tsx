@@ -1,7 +1,7 @@
 import type { NextApiRequest, NextApiResponse } from 'next';
 import axios from 'axios';
 import admin, { ServiceAccount } from 'firebase-admin';
-const serviceAccount = require('../../../../FirebaseAdminKey.json');
+const serviceAccount = JSON.parse(process.env.FIREBASE_ADMIN_KEY as string);
 
 if (!admin.apps.length) {
     admin.initializeApp({

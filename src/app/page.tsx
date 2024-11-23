@@ -3,6 +3,7 @@
 import { useEffect, useState } from 'react';
 import Cookies from 'js-cookie';
 import { inView, animate, spring } from "motion";
+import { set } from 'firebase/database';
 
 export default function Home() {
   useEffect(() => {
@@ -40,6 +41,7 @@ export default function Home() {
 
   const [amountrecords, setRecords] = useState<number>();
   const [amountservers, setServers] = useState<number>();
+  const [amountusers, setUsers] = useState<number>();
 
   useEffect(() => {
     fetch(`/api/firebase/infos`)
@@ -47,6 +49,7 @@ export default function Home() {
       .then(async (data) => {
         setServers(data.servers);
         setRecords(data.records);
+        setUsers(data.users);
       })
       .catch((error) => console.error('Erreur lors de la récupération des serveurs:', error));
   } , []);
@@ -112,8 +115,22 @@ export default function Home() {
           <section id='users_count'>
             <ul>
               <h2>Users</h2>
-              <p>Null</p>
+              <p>{amountusers}</p>
             </ul>
+          </section>
+        </div>
+        <div className='features'>
+          <section className='1'>
+            <h2>Track current records</h2>
+            <p>Track the current records easily</p>
+          </section>
+          <section className='2'>
+            <h2>Search current records from where you want</h2>
+            <p>You can search for records from where you want. Discord, your phone, your computer or even your TV</p>
+          </section>
+          <section className='3'>
+            <h2>Leaderboard for the player</h2>
+            <p>You can take a part into the leaderboard and try to be one with the most records to their name</p>
           </section>
         </div>
       </main>

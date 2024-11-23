@@ -1,8 +1,3 @@
-@font-face {
-  font-family: 'Flux';
-  src: url('/fonts/Flux.ttf') format('truetype');
-}
-
 :root {
   --background: linear-gradient(to right, #66E972, #28A65E);
   --foreground: #171717;
