@@ -1,9 +1,7 @@
 "use client";
 
-import { useEffect, useState } from 'react';
+import { use, useEffect, useState } from 'react';
 import Cookies from 'js-cookie';
-import { initializeApp, getApps } from 'firebase/app';
-import { getDatabase, ref, get, child } from 'firebase/database';
 import { inView, animate, spring } from "motion";
 
 const firebaseConfig = {
@@ -15,16 +13,6 @@ const firebaseConfig = {
   messagingSenderId: process.env.REACT_APP_MESSAGING_SENDER_ID,
   appId: process.env.REACT_APP_APP_ID
 };
-
-let app = null;
-
-if (!getApps().length) {
-  app = initializeApp(firebaseConfig);
-} else {
-  app = getApps()[0];
-}
-
-const db = getDatabase(app);
 
 export default function Home() {
   useEffect(() => {
@@ -62,38 +50,16 @@ export default function Home() {
 
   const [amountrecords, setRecords] = useState<number>();
   const [amountservers, setServers] = useState<number>();
-  
+
   useEffect(() => {
-    const fetchRecords = async () => {
-      try {
-        const snapshot = await get(child(ref(db), '/records'));
-        const records = snapshot.val();
-        if (records) {
-          setRecords(Object.keys(records).length);
-        } else {
-          setRecords(0);
-        }
-      } catch (error) {
-        console.error('Erreur lors de la récupération des enregistrements:', error);
-      }
-    };
-    const fetchServers = async () => {
-      try {
-          const snapshot = await get(child(ref(db), '/info/servers'));
-          const servers = snapshot.val();
-          if (servers) {
-              setServers(servers);
-          } else {
-              setServers(0);
-          }
-      } catch (error) {
-          console.error('Erreur lors de la récupération des serveurs:', error);
-      }
-  }
-  
-    fetchRecords();
-    fetchServers();
-  }, [db]);
+    fetch(`/api/firebase/infos`)
+      .then((res) => res.json())
+      .then(async (data) => {
+        setServers(data.servers);
+        setRecords(data.records);
+      })
+      .catch((error) => console.error('Erreur lors de la récupération des serveurs:', error));
+  } , []);
 
   const handleLogin = () => {
     setLoginframe(
@@ -144,7 +110,7 @@ export default function Home() {
           <section id='servers_count'>
             <ul>
               <h2>Servers</h2>
-              <p>{amountservers}</p>              
+              <p>{amountservers}</p>
             </ul>
           </section>
           <section id='records_count'>

@@ -83,6 +83,7 @@
     flex-direction: row;
     align-items: center;
     justify-content: space-between;
+    flex-direction: column;
     padding: 1rem;
 }
 
@@ -90,6 +91,22 @@
     padding: .5rem;
     border: 2px solid var(--foreground);
     border-radius: 10px;
+    width: 100%;
+}
+
+#dashboard main .left .search .options {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+}
+
+#dashboard main .left .search .options li {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    user-select: none;
     width: 100%;
 }
 
