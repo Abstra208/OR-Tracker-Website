@@ -19,7 +19,7 @@ You can visite the website here: [OR Tracker Website](https://ortracker.app)
 ![](https://tokei.rs/b1/github/abstra208/or-tracker-website)
 ![Next.js](https://img.shields.io/badge/Made%20with-Next.js-000000.svg)
 ![TypeScript](https://img.shields.io/badge/Made%20with-TypeScript-3078C6.svg)
-![License: MIT](https://img.shields.io/badge/License-AGPL-3.0-yellow.svg)
+![License: AGPL-3.0](https://img.shields.io/badge/License-AGPL-3.0-yellow.svg)
 
 
 ## Image
