@@ -3,7 +3,6 @@
 import { useEffect, useState } from 'react';
 import Cookies from 'js-cookie';
 import { inView, animate, spring } from "motion";
-import { set } from 'firebase/database';
 
 export default function Home() {
   useEffect(() => {
@@ -73,7 +72,7 @@ export default function Home() {
             </div>
           </div>
           <div className='bottom'>
-            <p>By continuing, you agree to our <a href="">Terms of Service</a> and <a href="">Privacy Policy</a>.</p>
+            <p>By continuing, you agree to our <a href="/terms">Terms of Service</a> and <a href="/privacy">Privacy Policy</a>.</p>
           </div>
         </div>
       </div>
