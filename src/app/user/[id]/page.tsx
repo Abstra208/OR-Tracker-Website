@@ -73,9 +73,12 @@ export default function UserPage({ params }: { params: Promise<Params> }) {
                     {profile}
                 </ul>
             </div>
-            <ul>
-                {records_list}
-            </ul>
+            <div>
+                <h2>Records</h2>
+                <ul>
+                    {records_list}
+                </ul>
+            </div>
         </div>
     );
 }
