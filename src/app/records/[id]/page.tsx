@@ -20,7 +20,7 @@ export default function UserPage({ params }: { params: Promise<Params> }) {
     useEffect(() => {
         const fetchrecord = async () => {
             if (unwrappedParams) {
-                await fetch(`/api/record/info?id=${unwrappedParams.id}`)
+                await fetch(`/api/records/info?id=${unwrappedParams.id}`)
                     .then((res) => res.json())
                     .then((data) => {
                         console.log(data);
