@@ -9,6 +9,7 @@ interface Params {
 export default function UserPage({ params }: { params: Promise<Params> }) {
     const [records_list, setRecordsList] = useState<JSX.Element[]>([]);
     const [profile, setProfile] = useState<JSX.Element[]>([]);
+    const [badges, setBadges] = useState<JSX.Element[]>([]);
     const [unwrappedParams, setUnwrappedParams] = useState<Params | null>(null);
 
     useEffect(() => {
@@ -45,12 +46,21 @@ export default function UserPage({ params }: { params: Promise<Params> }) {
                     .then((res) => res.json())
                     .then((data) => {
                         const profile: JSX.Element[] = [];
+                        const badges: JSX.Element[] = [];
+                        for (const [key, value] of Object.entries(data.badges)) {
+                            badges.push(
+                                <li key={key}>
+                                    <h1>{value as React.ReactNode}</h1>
+                                </li>
+                            );
+                        }
                         profile.push(
                             <li key={data.id}>
                                 <h2>{data.username}</h2>
                                 <img src={data.avatar} alt="Avatar" />
                             </li>
                         );
+                        setBadges(badges);
                         setProfile(profile);
                     })
                     .catch((error) => console.error('Error fetching discord data:', error));
@@ -71,6 +81,9 @@ export default function UserPage({ params }: { params: Promise<Params> }) {
                 <h2>Profile</h2>
                 <ul>
                     {profile}
+                </ul>
+                <ul>
+                    {badges}
                 </ul>
             </div>
             <div>
