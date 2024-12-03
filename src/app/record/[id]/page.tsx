@@ -26,10 +26,12 @@ export default function UserPage({ params }: { params: Promise<Params> }) {
                         console.log(data);
                         const record: JSX.Element[] = [];
                         record.push(
-                            <div>
-                                <h2>{data.name}</h2>
-                                <p>{data.description}</p>
-                            </div>
+                            <li key={data.records.name}>
+                                <h2>{data.records.name}</h2>
+                                <p>{data.records.description}</p>
+                                <p>{data.records.link}</p>
+                                <p>{data.records.owner}</p>
+                            </li>
                         );
                         setRecord(record);
                     })
@@ -46,7 +48,9 @@ export default function UserPage({ params }: { params: Promise<Params> }) {
             <nav>
                 <h1>Record Page</h1>
             </nav>
-            {record}
+            <ul>
+                {record}
+            </ul>
         </div>
     );
 }
