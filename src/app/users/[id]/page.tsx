@@ -6,22 +6,22 @@ interface Params {
     id: string;
 }
 
-export default function UserPage({ params }: { params: Promise<Params> }) {
+export default function UserPage() {
     const [records_list, setRecordsList] = useState<JSX.Element[]>([]);
     const [profile, setProfile] = useState<JSX.Element[]>([]);
     const [badges, setBadges] = useState<JSX.Element[]>([]);
-    const [unwrappedParams, setUnwrappedParams] = useState<Params | null>(null);
+    const [ID, setID] = useState<Params | null>(null);
 
     useEffect(() => {
-        params.then((resolvedParams) => {
-            setUnwrappedParams(resolvedParams);
-        });
-    }, [params]);
+        const pathSegments = window.location.pathname.split('/');
+        const userId = pathSegments[pathSegments.length - 1];
+        setID({ id: userId });
+    }, []);
 
     useEffect(() => {
         const fetchrecords = async () => {
-            if (unwrappedParams) {
-                await fetch(`/api/user/records?id=${unwrappedParams.id}`)
+            if (ID) {
+                await fetch(`/api/user/records?id=${ID.id}`)
                     .then((res) => res.json())
                     .then((data) => {
                         const records: JSX.Element[] = [];
@@ -41,18 +41,20 @@ export default function UserPage({ params }: { params: Promise<Params> }) {
             }
         };
         const fetchdiscord = async () => {
-            if (unwrappedParams) {
-                await fetch(`/api/user/discord?id=${unwrappedParams.id}`)
+            if (ID) {
+                await fetch(`/api/user/discord?id=${ID.id}`)
                     .then((res) => res.json())
                     .then((data) => {
                         const profile: JSX.Element[] = [];
                         const badges: JSX.Element[] = [];
-                        for (const [key, value] of Object.entries(data.badges)) {
-                            badges.push(
-                                <li key={key}>
-                                    <h1>{value as React.ReactNode}</h1>
-                                </li>
-                            );
+                        if (data.badges){
+                            for (const [key, value] of Object.entries(data.badges)) {
+                                badges.push(
+                                    <li key={key}>
+                                        <h1>{value as React.ReactNode}</h1>
+                                    </li>
+                                );
+                            }                            
                         }
                         profile.push(
                             <li key={data.id}>
@@ -70,7 +72,7 @@ export default function UserPage({ params }: { params: Promise<Params> }) {
         }
         fetchrecords();
         fetchdiscord();
-    }, [unwrappedParams]);
+    }, [ID]);
 
     return (
         <div>

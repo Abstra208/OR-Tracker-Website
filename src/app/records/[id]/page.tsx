@@ -1,6 +1,5 @@
 'use client';
 
-import { div } from 'motion/react-client';
 import React, { useEffect, useState } from 'react';
 
 interface Params {
@@ -9,18 +8,18 @@ interface Params {
 
 export default function UserPage({ params }: { params: Promise<Params> }) {
     const [record, setRecord] = useState<JSX.Element[]>([]);
-    const [unwrappedParams, setUnwrappedParams] = useState<Params | null>(null);
+    const [ID, setID] = useState<Params | null>(null);
 
     useEffect(() => {
-        params.then((resolvedParams) => {
-            setUnwrappedParams(resolvedParams);
-        });
-    }, [params]);
+        const pathSegments = window.location.pathname.split('/');
+        const userId = pathSegments[pathSegments.length - 1];
+        setID({ id: userId });
+    }, []);
 
     useEffect(() => {
         const fetchrecord = async () => {
-            if (unwrappedParams) {
-                await fetch(`/api/records/info?id=${unwrappedParams.id}`)
+            if (ID) {
+                await fetch(`/api/records/info?id=${ID.id}`)
                     .then((res) => res.json())
                     .then((data) => {
                         console.log(data);
@@ -41,7 +40,7 @@ export default function UserPage({ params }: { params: Promise<Params> }) {
             }
         };
         fetchrecord();
-    }, [unwrappedParams]);
+    }, [ID]);
 
     return (
         <div>
