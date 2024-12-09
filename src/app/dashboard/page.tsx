@@ -189,7 +189,7 @@ export default function Dashboard() {
     }
 
     return (
-        <div id='dashboard'>
+        <main id='dashboard'>
             <nav>
                 <div className='left'>
                     <img src="/or_records.png" alt="Record Tracker Logo" />
@@ -242,6 +242,6 @@ export default function Dashboard() {
                     </div>
                 </section>
             </main>
-        </div>
+        </main>
     );
 };

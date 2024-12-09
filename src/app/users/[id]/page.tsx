@@ -75,7 +75,7 @@ export default function UserPage() {
     }, [ID]);
 
     return (
-        <div>
+        <main>
             <nav>
                 <h1>User Page</h1>
             </nav>
@@ -94,6 +94,6 @@ export default function UserPage() {
                     {records_list}
                 </ul>
             </div>
-        </div>
+        </main>
     );
 }

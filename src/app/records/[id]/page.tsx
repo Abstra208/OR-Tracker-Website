@@ -6,7 +6,7 @@ interface Params {
     id: string;
 }
 
-export default function UserPage({ params }: { params: Promise<Params> }) {
+export default function RecordPage({ params }: { params: Promise<Params> }) {
     const [record, setRecord] = useState<JSX.Element[]>([]);
     const [ID, setID] = useState<Params | null>(null);
 
@@ -43,13 +43,13 @@ export default function UserPage({ params }: { params: Promise<Params> }) {
     }, [ID]);
 
     return (
-        <div>
+        <main>
             <nav>
                 <h1>Record Page</h1>
             </nav>
             <ul>
                 {record}
             </ul>
-        </div>
+        </main>
     );
 }

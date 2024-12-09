@@ -2,7 +2,7 @@ import '../style/test.css';
 
 export default function test() {
     return (
-        <div id='test'>
+        <main id='test'>
             <nav>
                 <img src="/or_tracker.png" alt="" />
                 <ul>
@@ -36,6 +36,6 @@ export default function test() {
                     </ul>
                 </div>
             </footer>
-        </div>
+        </main>
     );
 }

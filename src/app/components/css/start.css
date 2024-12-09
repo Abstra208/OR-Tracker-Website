@@ -1,0 +1,27 @@
+#start {
+    display: grid;
+    grid-template-rows: 80vh 8vh 50vh;
+}
+
+#welcome{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #81818129;
+    height: 100%;
+    width: 100%;
+}
+
+#welcome img{
+    width: 10vw;
+    border-radius: 10px;
+}
+
+
+#informations {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    height: 100%;
+    width: 100%;
+}

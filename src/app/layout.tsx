@@ -3,6 +3,8 @@ import "./globals.css";
 import { SpeedInsights } from "@vercel/speed-insights/next"
 import { Analytics } from "@vercel/analytics/react"
 
+import Footer from "./components/footer";
+
 export const metadata: Metadata = {
   title: "OR Tracker",
   description: "OR Tracker V.2",
@@ -41,6 +43,7 @@ export default function RootLayout({
       </head>
       <body>
         {children}
+        <Footer />
       </body>
     </html>
   );
