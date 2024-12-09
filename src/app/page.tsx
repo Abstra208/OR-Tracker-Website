@@ -18,7 +18,7 @@ export default function Home() {
     if (adresse === 'records') {
       setDisplay(<Records />);
     } else if (adresse === 'users') {
-      setDisplay(<h1>Users</h1>);
+      setDisplay(<Users />);
     } else {
       setDisplay(<Start />);
     }
