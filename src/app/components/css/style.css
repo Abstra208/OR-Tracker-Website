@@ -1,43 +1,63 @@
 #app {
     display: grid;
-    grid-template-rows: 5vh auto;
+    grid-template-rows: 6vh auto;
 }
 
 nav {
-    padding: 0 1rem;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
+    display: grid;
+    grid-template-columns: 25% auto 25%;
+    padding: 0 20px;
+    color: black;
 }
-
-nav a {
-    font-size: 1.2rem;
-    font-weight: bold;
-    padding: .5rem 1.5rem;
-    border-radius: 10px;
-    color: var(--foreground);
-    text-decoration: none;
-    transition: background-color 0.3s ease, color 0.3s ease;
-    width: 100%;
-}
-nav a:hover {
-    background-color: white;
-}
-
 
 nav .left {
     display: flex;
-    flex-direction: row;
+    justify-content: flex-start;
     align-items: center;
+}
+nav .left img {
+    width: 5vh;
+    border-radius: 50%;
+}
+nav .left h1 {
+    font-size: 1.5rem;
+    margin-left: 10px;
+}
+
+nav .center {
+    display: flex;
     justify-content: center;
-    height: 100%;
+    align-items: center;
 }
-
-nav .left img{
-    height: 60%;
-    margin-right: .5rem;
+nav .center ul {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    list-style: none;
 }
-
-nav .left h1{
+nav .center ul li {
+    margin: 0 25px;
     font-size: 1.2rem;
+    font-weight: 800;
+}
+nav .center ul li a {
+    text-decoration: none;
+    color: black;
+    cursor: pointer;
+}
+
+nav .right {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+}
+nav .right button {
+    padding: 10px 20px;
+    border-radius: 10px;
+    background-color: blue;
+    color: white;
+    font-size: 1rem;
+    font-weight: 800;
+    border: none;
+    cursor: pointer;
 }

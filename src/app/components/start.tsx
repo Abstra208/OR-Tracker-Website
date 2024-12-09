@@ -25,8 +25,8 @@ export default function start() {
                 </div>
                 <p>OR Tracker is a bot designed specifically for the community of the OR server,<br/> facilitating the seamless tracking of current records.</p>
                 <ul>
-                    <li><a href="/invite" target='_blank'>Invite OR Tracker</a></li>
-                    <li><a href="/invite?methode=server" target='_blank'>Join the server</a></li>
+                    <li className='invite'><a href="/invite" target='_blank'>Invite OR Tracker</a></li>
+                    <li className='join'><a href="/invite?methode=server" target='_blank'>Join the server</a></li>
                 </ul>
             </div>
             <div id='informations'>

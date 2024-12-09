@@ -41,9 +41,20 @@ export default function Home() {
   return (
       <main id='app'>
         <nav>
-          <a onClick={handleHome}>Home</a>
-          <a onClick={handleRecords}>Records</a>
-          <a onClick={handleUsers}>Users</a>
+          <div className='left'>
+            <img src="/or_records.png" alt="" />
+            <h1>OR Records</h1>
+          </div>
+          <div className='center'>
+            <ul>
+              <li><a onClick={handleHome}>Home</a></li>
+              <li><a onClick={handleRecords}>Records</a></li>
+              <li><a onClick={handleUsers}>Users</a></li>
+            </ul>
+          </div>
+          <div className='right'>
+            <button>Coming soon!</button>
+          </div>
         </nav>
         {display}
       </main>
