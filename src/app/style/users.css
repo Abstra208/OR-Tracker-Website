@@ -1,0 +1,109 @@
+main {
+    height: 94vh;
+    width: 100%;
+}
+main .users {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    height: 100%;
+    width: 100%;
+}
+main .users h1 {
+    display: flex;
+    justify-content: flex-start;
+    font-size: 2rem;
+    width: 80%;
+    padding: 0px 10px;
+}
+main .users .container {
+    display: grid;
+    grid-template-columns: 40% 60%;
+    height: 90%;
+    width: 80%;
+}
+main .users .container .left {
+    height: 100%;
+    display: grid;
+    grid-template-rows: 8% 92%;
+    overflow: hidden;
+}
+main .users .container .left .search {
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    flex-direction: column;
+    height: 100%;
+    width: 100%;
+    padding: 8px 10px;
+}
+main .users .container .left .search input {
+    width: 100%;
+    padding: 2%;
+    font-size: 1.3rem;
+    border-radius: 5px;
+    border: white 1.5px solid;
+    color: white;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+    height: 100%;
+    background-color: transparent;
+}
+main .users .container .left .search input::placeholder {
+    color: rgba(255, 255, 255, 0.7);
+}
+main .users .container .left ul {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-start;
+    height: 100%;
+    width: 100%;
+    padding: 0px 10px;
+    overflow-y: scroll;
+}
+main .users .container .left ul li {
+    display: flex;
+    align-items: center;
+    width: 100%;
+    border: white 1.5px solid;
+    border-radius: 5px;
+    margin: 5px 0;
+}
+main .users .container .left ul li input {
+    display: none;
+}
+main .users .container .left ul li input:checked + label {
+    background-color: rgb(255, 255, 255, 0.1);
+}
+main .users .container .left ul li label {
+    display: flex;
+    width: 100%;
+    height: 100%;
+    transition: .15s ease;
+}
+main .users .container .left ul li img {
+    width: 4vh;
+    margin: 2%;
+    border-radius: 100%;
+
+}
+main .users .container .left ul li .informations {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+}
+
+main .users .container .right {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+main .users .container .right .informations {
+    height: 98%;
+    width: 97%;
+    border: white 1.5px solid;
+    border-radius: 5px;
+    padding: 10px;
+}
