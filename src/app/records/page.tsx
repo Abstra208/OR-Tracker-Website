@@ -1,3 +1,5 @@
+'use client';
+
 export default function Records() {
 
     const handleSubmit = () => {
@@ -8,7 +10,7 @@ export default function Records() {
     return (
         <main>
             <h1>Records</h1>
-            <input type="text" name="" id="id" />
+            <input type="text" name="" id="id" required placeholder="Enter the record ID" />
             <button onClick={handleSubmit}>Submit</button>
         </main>
     );

@@ -1,5 +1,5 @@
 import { useRouter } from "next/router";
-import { loginWithCustomToken } from "../api/auth/firebase";
+import { loginWithCustomToken } from "./firebase";
 import { useEffect } from "react";
 
 export default function Callback() {

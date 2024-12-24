@@ -7,7 +7,7 @@ const RedirectToDiscord = () => {
     const router = useRouter();
 
     useEffect(() => {
-        router.push('https://discord.com/oauth2/authorize?client_id=1294873348387635230');
+        router.push('https://discord.gg/qHt6dKqTJ3');
     }, [router]);
 
     return null;
