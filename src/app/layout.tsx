@@ -8,7 +8,7 @@ import Footer from "./components/footer";
 
 export const metadata: Metadata = {
   title: "OR Tracker",
-  description: "OR Tracker V.2",
+  description: "OR Tracker is a bot designed specifically for the community of the OR server, facilitating the seamless tracking of current records.",
   robots: "follow, index",
   openGraph: {
     type: "website",
