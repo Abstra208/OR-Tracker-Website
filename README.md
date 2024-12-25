@@ -24,7 +24,7 @@ You can visite the website here: [OR Tracker Website](https://ortracker.app)
 
 ## Image
 
-<img width="1000" alt="image" src="https://github.com/user-attachments/assets/4851f000-a0dd-4270-a7e3-f2d2b5ce50d1" />
+<img width="1000" alt="image" src="https://github.com/user-attachments/assets/c0c4a870-d088-4a4f-a08c-c1955d14c9a7" />
 
 ## Information for non-OR player
 
