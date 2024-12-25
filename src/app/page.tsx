@@ -10,9 +10,11 @@ export default function Home() {
   useEffect(() => {
     const handleScroll = () => {
       const informationsSection = document.getElementById('informations');
+      if (!informationsSection) return;
       const infoUnderline = (informationsSection as HTMLElement).querySelector('.underline');
 
       const featuresSection = document.getElementById('features');
+      if (!featuresSection) return;
       const featuresUnderline = (featuresSection as HTMLElement).querySelector('.underline');
 
       if (infoUnderline) {

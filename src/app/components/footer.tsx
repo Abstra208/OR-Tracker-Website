@@ -22,15 +22,13 @@ export default function Footer() {
                         </ul>
                         <ul className="right">
                             <li><h3>Legal</h3></li>
-                            <li><Link href="/privacy">Privacy Policy</Link></li>
                             <li><Link href="/terms">Terms of Service</Link></li>
+                            <li><Link href="/privacy">Privacy Policy</Link></li>
                             <li><Link href="/contact">Contact</Link></li>
                         </ul>                        
                     </div>
                 </div>
-                <div id="right">
-
-                </div>
+                <div id="right"></div>
             </div>
             <p>© 2024 OR Records • Not affiliated with Discord Inc., Piston Solutions, or Mojang AB.</p>
         </footer>

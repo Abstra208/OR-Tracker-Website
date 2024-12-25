@@ -20,6 +20,7 @@ export const metadata: Metadata = {
     type: "website",
     url: "https://ortracker.app/",
     title: "OR Tracker",
+    siteName: "OR Tracker",
     description: "OR Tracker is a bot designed specifically for the community of the OR server, facilitating the seamless tracking of current records.",
     images: [
       {
