@@ -13,7 +13,7 @@ export const metadata: Metadata = {
   icons: [
     {
       rel: "icon",
-      url: "or_records.png",
+      url: "orrecords.png",
     },
   ],
   openGraph: {
@@ -24,7 +24,7 @@ export const metadata: Metadata = {
     description: "OR Tracker is a bot designed specifically for the community of the OR server, facilitating the seamless tracking of current records.",
     images: [
       {
-        url: "/record_tracker.png",
+        url: "/ortracker.png",
         alt: "Record Tracker Logo",
       },
     ],
