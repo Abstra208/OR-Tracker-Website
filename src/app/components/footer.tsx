@@ -5,9 +5,12 @@ export default function Footer() {
         <footer>
             <div className="navigation">
                 <div id="left">
-                    <img src="/ortracker_logo.png" alt="" />
+                    <div className="group">
+                        <img src="/ortracker_logo.png" alt="" />
+                        <p>OR Tracker is a bot designed specifically for the community of the OR server, facilitating the seamless tracking of current records.</p>
+                    </div>
                 </div>
-                <div id="center">
+                <div id="right">
                     <div className="group">
                         <ul className="left">
                             <li><h3>Navigation</h3></li>
@@ -28,9 +31,8 @@ export default function Footer() {
                         </ul>                        
                     </div>
                 </div>
-                <div id="right"></div>
             </div>
-            <p>© 2024 OR Records • Not affiliated with Discord Inc., Piston Solutions, or Mojang AB.</p>
+            <p>© 2024 - 2025 OR Records • Not affiliated with Discord Inc., Piston Solutions, or Mojang AB.</p>
         </footer>
     );
 }

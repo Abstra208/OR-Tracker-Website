@@ -1,35 +1,58 @@
+
+/*!************************************************!*\
+ !************& © Copyright @abstra208 &************!
+\*!************************************************!*/
+
 #start {
     display: grid;
-    grid-template-rows: 80vh 25vh 120vh;
+    grid-template-rows: 111vh 50vh 100vh 25vh 5vh;
 }
 
 #welcome {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    flex-direction: column;
+    height: 100%;
+    width: 100%;
+    position: relative;
+}
+#welcome .logo {
+    height: 25vh;
+    margin-bottom: 10px;
+    position: absolute;
+    top: -5%;
+    z-index: 1001;
+}
+#welcome .hero {
+    position: absolute;
+    bottom: 0;
+    background: linear-gradient(0deg, var(--right), var(--average));
+    width: 90%;
+    height: 84%;
+    border-radius: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+#welcome .hero .top {
     display: flex;
     justify-content: center;
     align-items: center;
     flex-direction: column;
     height: 100%;
     width: 100%;
+    color: white;
+    padding: 5%;
 }
-
-#welcome div {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-}
-#welcome div img {
-    width: 20vh;
-    border-radius: 50%;
-    box-shadow: 0 2px 50px rgba(0, 0, 0, 0.2);
-}
-#welcome div h1 {
-    font-size: 2rem;
+#welcome .hero .top h1 {
+    font-size: 3rem;
     margin-top: 20px;
     display: flex;
     justify-content: center;
 }
-#welcome div h1 span {
+#welcome .hero .top h1 span {
     color: white;
     background-color: #5765F2;
     padding: 5px 10px;
@@ -37,26 +60,25 @@
     font-size: 1.5rem;
     margin-left: 10px;
 }
-#welcome p {
+#welcome .hero .top p {
+    font-weight: 400;
     font-size: 1.5rem;
-    margin-top: 20px;
-    display: flex;
-    justify-content: center;
     text-align: center;
+    color: var(--secondary);
 }
-#welcome ul {
+#welcome .hero .top ul {
     display: flex;
     justify-content: center;
     align-items: center;
     list-style: none;
     margin-top: 30px;
 }
-#welcome ul li {
+#welcome .hero .top ul li {
     margin: 0 15px;
     font-size: 1.2rem;
     font-weight: 800;
 }
-#welcome ul li a {
+#welcome .hero .top ul li a {
     text-decoration: none;
     color: white;
     background-color: #4E5058;
@@ -68,73 +90,32 @@
     justify-content: center;
     align-items: center;
 }
-#welcome ul li a:hover {
+#welcome .hero .top ul li a:hover {
     background-color: #6D6F78;
 }
-#welcome ul li .discord {
+#welcome .hero .top ul li .discord {
     background-color: #5765F2;
 }
-#welcome ul li .discord:hover {
+#welcome .hero .top ul li .discord:hover {
     background-color: #4752C4;
 }
-#welcome ul li a img {
+#welcome .hero .top ul li a img {
     height: 1.9vh;
     margin-left: 10px;
 }
-
-
-#informations {
+#welcome .hero .bottom {
     display: flex;
     justify-content: center;
-    align-items: flex-start;
+    align-items: center;
     flex-direction: column;
     height: 100%;
     width: 100%;
-    background-color: rgba(0, 0, 0, 0.2);
     color: white;
     padding: 5%;
-    backdrop-filter: blur(10px);
-    box-shadow: 0 0 50px rgba(0, 0, 0, 0.2);
 }
-#informations h2 {
+#welcome .hero .bottom h2 {
     font-size: 2rem;
     margin-top: 20px;
-}
-#informations h2 .underline {
-    position: relative;
-    display: inline-block;
-}
-#informations h2 .underline.active::before {
-    content: '';
-    position: absolute;
-    width: 100%;
-    height: 7px;
-    bottom: -1px;
-    left: 0;
-    animation: underlineslide .6s ease;
-    background-color: #5765F2;
-    z-index: -1;
-}
-@keyframes underlineslide {
-    0% {
-        width: 0;
-    }
-    100% {
-        width: 100%;
-    }
-}
-#informations h2 .small {
-    position: absolute;
-    font-size: 1rem;
-    margin-top: 5px;
-}
-#informations p {
-    font-size: 1.5rem;
-    margin-top: 20px;
-    font-weight: 300;
-}
-#informations p span {
-    font-weight: 800;
 }
 
 
@@ -175,11 +156,8 @@
 }
 #features .features {
     display: grid;
-    grid-template-rows: 1fr 1fr 1fr;
-    grid-gap: 20px;
-    margin-top: 20px;
+    grid-template: 1fr 1fr / 1fr 1fr;
     height: 100%;
-    width: 100%;
 }
 #features .features div {
     display: flex;
@@ -187,10 +165,107 @@
     align-items: center;
     flex-direction: column;
     color: white;
-    padding: 20px;
+    margin: 20px;
     border-radius: 10px;
     transition: .3s ease;
 }
 #features .features div:hover {
     background-color: rgba(0, 0, 0, 0.2);
+}
+
+#getstarted {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    height: 100%;
+    width: 100%;
+    color: white;
+    padding: 5%;
+}
+#getstarted h2 {
+    font-size: 2rem;
+    margin-top: 20px;
+}
+#getstarted p {
+    font-size: 1.5rem;
+    margin-top: 20px;
+    font-weight: 300;
+}
+#getstarted ul {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    list-style: none;
+    margin-top: 30px;
+}
+#getstarted ul li {
+    margin: 0 15px;
+    font-size: 1.2rem;
+    font-weight: 800;
+}
+#getstarted ul li a {
+    text-decoration: none;
+    color: white;
+    background-color: #4E5058;
+    cursor: pointer;
+    padding: 10px 20px;
+    border-radius: 10px;
+    transition: .3s ease;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+#getstarted ul li a:hover {
+    background-color: #6D6F78;
+}
+#getstarted ul li .discord {
+    background-color: #5765F2;
+}
+#getstarted ul li .discord:hover {
+    background-color: #4752C4;
+}
+#getstarted ul li a img {
+    height: 1.9vh;
+    margin-left: 10px;
+}
+
+#faq {
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    flex-direction: column;
+    height: 100%;
+    width: 100%;
+    color: white;
+    padding: 5%;
+}
+#faq h2 {
+    font-size: 2rem;
+    margin-top: 20px;
+}
+#faq p {
+    font-size: 1.5rem;
+    margin-top: 20px;
+    font-weight: 300;
+}
+#faq div {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    color: white;
+    margin: 20px;
+    border-radius: 10px;
+    transition: .3s ease;
+}
+#faq div h3 {
+    font-size: 1.5rem;
+    margin-top: 20px;
+}
+#faq div p {
+    font-size: 1.2rem;
+    margin-top: 20px;
+    text-align: center;
+    font-weight: 300;
 }

@@ -18,6 +18,31 @@ export default function Header() {
     }
 
     useEffect(() => {
+        let lastScrollY = window.scrollY;
+
+        const handleScroll = () => {
+            const header = document.querySelector('nav');
+            if (window.scrollY > lastScrollY) {
+                header?.classList.add('hidden');
+            } else {
+                header?.classList.remove('hidden');
+            }
+            lastScrollY = window.scrollY;
+            if (window.scrollY !== 0) {
+                header?.classList.add('scrolled');
+            } else {
+                header?.classList.remove('scrolled');
+            }
+        };
+
+        window.addEventListener('scroll', handleScroll);
+
+        return () => {
+            window.removeEventListener('scroll', handleScroll);
+        };
+    }, []);
+
+    useEffect(() => {
         const navigation = document.getElementById('navigation');
         const homeNav = document.querySelector('.home a');
         const recordsNav = document.querySelector('.records a');
@@ -47,7 +72,7 @@ export default function Header() {
                 <img src="/orrecords.png" alt="" />
                 <h1>OR Records</h1>
             </div>
-            <div className='center'>
+            <div className='right'>
                 <div className="navigation">
                     <ul>
                         <li className="home"><Link href="/">Home</Link></li>
@@ -56,9 +81,6 @@ export default function Header() {
                     </ul>
                     <div id="navigation" className={page}></div>
                 </div>
-            </div>
-            <div className='right'>
-                <button>Coming soon!</button>
             </div>
         </nav>
     );
