@@ -11,17 +11,19 @@ export const metadata: Metadata = {
   description: "OR Tracker is a bot designed specifically for the community of the OR server, facilitating the seamless tracking of current records.",
   robots: "follow, index",
   openGraph: {
-    type: "website",
-    url: "https://ortracker.app/",
-    title: "OR Tracker",
-    siteName: "OR Tracker",
-    description: "OR Tracker is a bot designed specifically for the community of the OR server, facilitating the seamless tracking of current records.",
+    title: 'OR Tracker',
+    description: 'OR Tracker is a bot designed specifically for the community of the OR server, facilitating the seamless tracking of current records.',
+    url: 'https://ortracker.app',
+    siteName: 'OR Tracker',
     images: [
       {
-        url: "/ortracker_og.png",
-        alt: "Record Tracker Logo",
+        url: 'https://ortracker.app/og.png',
+        width: 800,
+        height: 600,
       },
     ],
+    locale: 'en_US',
+    type: 'website',
   },
 };
 
